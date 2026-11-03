@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Company Self-Service Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B192C;
+    --navy-dark:#060D17;
+    --navy-light:#1E3E62;
+    --ink:#0B192C;
+    --body-gray:#475569;
+    --lav-bg:#F1F5F9;
+    --card-bg:#FFFFFF;
+    --border:#E2E8F0;
+    --orange:#E8A230;
+    --gold:#E8A230;
+    --green:#16A34A;
+    --coral:#D97706;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+
+  /* ===== NAV / LOGO ===== */
+  .topbar{
+    padding:28px 64px 0;
+  }
+  .logo-word{
+    font-size:26px;
+    font-weight:800;
+    letter-spacing:0.5px;
+    color:var(--navy);
+  }
+  .logo-sub{
+    font-size:13px;
+    color:#64748B;
+    margin-top:2px;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:var(--lav-bg);
+    padding:48px 64px 64px;
+    margin-top:24px;
+    border-bottom:1px solid var(--border);
+  }
+  .badge-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:28px;
+  }
+  .badge{
+    position:relative;
+    width:56px;height:56px;
+    border-radius:50%;
+    background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    box-shadow:0 2px 8px rgba(11,25,44,0.15);
+  }
+  .badge-initials{
+    color:#fff;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:0.5px;
+  }
+  .badge-flag{
+    position:absolute;
+    bottom:-4px;right:-6px;
+    width:0;height:0;
+    border-left:9px solid transparent;
+    border-right:9px solid transparent;
+    border-bottom:15px solid var(--gold);
+  }
+  .badge-row .company-name{
+    font-size:22px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  h1.hero-title{
+    font-size:56px;
+    line-height:1.08;
+    font-weight:800;
+    color:var(--ink);
+    margin:0 0 20px;
+    max-width:900px;
+    letter-spacing:-0.02em;
+  }
+  .hero-sub{
+    font-size:19px;
+    color:var(--body-gray);
+    line-height:1.5;
+    max-width:640px;
+    margin:0;
+  }
+
+  /* ===== STEPS ===== */
+  .steps-wrap{
+    padding:72px 64px 56px;
+    text-align:center;
+  }
+  .steps-heading{
+    font-size:28px;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:56px;
+  }
+  .steps-track{
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .step{
+    flex:1;
+    position:relative;
+    padding:0 12px;
+  }
+  .step-circle{
+    width:44px;height:44px;
+    border-radius:50%;
+    border:2px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+    color:#94A3B8;
+    background:#fff;
+    margin:0 auto 20px;
+    position:relative;
+    z-index:2;
+    transition:all 0.2s;
+  }
+  .step.filled .step-circle{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:#fff;
+  }
+  .step-line{
+    position:absolute;
+    top:22px;left:0;right:0;
+    height:2px;
+    background:var(--border);
+    z-index:1;
+  }
+  .step:first-child .step-line{left:50%;}
+  .step:last-child .step-line{right:50%;}
+  .step p{
+    font-size:15px;
+    color:var(--body-gray);
+    line-height:1.45;
+    max-width:170px;
+    margin:0 auto;
+  }
+
+  /* ===== WHAT YOU CAN DO ===== */
+  .section-cards{
+    padding:40px 64px 80px;
+  }
+  .section-title{
+    text-align:center;
+    font-size:30px;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:44px;
+  }
+  .cards-row{
+    display:flex;
+    gap:28px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .card{
+    position:relative;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:32px 28px;
+    flex:1;
+    box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);
+    transition:transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 15px -3px rgba(11,25,44,0.08);
+  }
+  .card-icon{
+    width:52px;height:52px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:24px;
+  }
+  .card-icon svg{width:22px;height:22px;stroke:var(--navy);}
+  .accent{
+    position:absolute;
+    top:22px;right:22px;
+  }
+  .accent.tri{
+    width:0;height:0;
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+    border-bottom:14px solid var(--gold);
+  }
+  .accent.dot{
+    width:14px;height:14px;
+    border-radius:50%;
+    background:var(--green);
+  }
+  .accent.sq{
+    width:16px;height:16px;
+    border-radius:4px;
+    background:var(--gold);
+    transform:rotate(12deg);
+  }
+  .card h3{
+    font-size:20px;
+    font-weight:700;
+    color:var(--ink);
+    margin:0 0 12px;
+  }
+  .card p{
+    font-size:15px;
+    color:var(--body-gray);
+    line-height:1.55;
+    margin:0 0 24px;
+  }
+  .field{
+    width:100%;
+    padding:14px 16px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:#fff;
+    font-size:15px;
+    color:var(--ink);
+    margin-bottom:12px;
+    display:block;
+    outline:none;
+    font-family:inherit;
+    transition:border-color 0.2s, box-shadow 0.2s;
+  }
+  .field:focus{
+    border-color:var(--navy);
+    box-shadow:0 0 0 3px rgba(11,25,44,0.08);
+  }
+  .field::placeholder{
+    color:#94A3B8;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    border-radius:24px;
+    padding:14px 26px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    width:100%;
+    justify-content:center;
+    font-family:inherit;
+    transition:background 0.2s, box-shadow 0.2s;
+  }
+  .btn:hover{
+    background:var(--navy-light);
+  }
+  .btn.outline{
+    background:transparent;
+    border:1.5px solid var(--navy);
+    color:var(--navy);
+  }
+  .btn.outline:hover{
+    background:var(--lav-bg);
+  }
+
+  /* ===== SECURITY SECTION ===== */
+  .security{
+    padding:20px 64px 90px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .security h2{
+    font-size:30px;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:36px;
+  }
+  .security-grid{
+    display:flex;
+    gap:56px;
+    align-items:flex-start;
+    margin-bottom:40px;
+  }
+  .shield{
+    position:relative;
+    width:120px;height:120px;
+    border-radius:50%;
+    background:var(--lav-bg);
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .shield svg{width:44px;height:44px;stroke:var(--navy);}
+  .shield .accent.tri{
+    top:auto;right:auto;
+    bottom:8px;left:8px;
+  }
+  .security-copy p{
+    font-size:17px;
+    color:var(--body-gray);
+    line-height:1.6;
+    margin:0 0 20px;
+  }
+  .checklist{
+    list-style:none;
+    padding:0;margin:0;
+  }
+  .checklist li{
+    display:flex;
+    gap:12px;
+    font-size:17px;
+    color:var(--body-gray);
+    margin-bottom:16px;
+    line-height:1.5;
+  }
+  .checklist svg{
+    width:20px;height:20px;
+    stroke:var(--green);
+    flex-shrink:0;
+    margin-top:2px;
+  }
+  .checklist code{
+    background:none;
+    font-family:inherit;
+    font-weight:700;
+    color:var(--ink);
+  }
+  hr.rule{
+    border:none;
+    border-top:1px solid var(--border);
+    margin:28px 0;
+  }
+  .foot-copy{
+    font-size:16px;
+    color:var(--body-gray);
+    line-height:1.6;
+  }
+  .foot-copy b{color:var(--ink);}
+  .foot-copy a{color:var(--navy);text-decoration:underline;font-weight:600;}
+  .foot-copy a:hover{color:var(--gold);}
+</style>
+</head>
+<body>
+
+  <!-- LOGO -->
+  <div class="topbar">
+    <div class="logo-word">CICOD</div>
+    <div class="logo-sub">enabling e-business</div>
+  </div>
+
+  <!-- HERO: company badge replaces "Client portal", CTA buttons removed -->
+  <section class="hero">
+    <div class="badge-row">
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        <span class="badge-flag"></span>
+      </div>
+      <div class="company-name">[Company Name]</div>
+    </div>
+    <h1 class="hero-title">Track every request, effortlessly.</h1>
+    <p class="hero-sub">The business world is going fully digital, making it easier for you to access services, submit requests, and track progress anytime, anywhere.</p>
+  </section>
+
+  <!-- STEPS -->
+  <section class="steps-wrap">
+    <div class="steps-heading">Steps to get started</div>
+    <div class="steps-track">
+      <div class="step filled"><span class="step-line"></span><div class="step-circle">1</div><p>Choose a service from the menu</p></div>
+      <div class="step"><span class="step-line"></span><div class="step-circle">2</div><p>Fill out the form and attach required documents</p></div>
+      <div class="step"><span class="step-line"></span><div class="step-circle">3</div><p>Submit online, no queues, no paper</p></div>
+      <div class="step"><span class="step-line"></span><div class="step-circle">4</div><p>Receive a reference number for tracking</p></div>
+      <div class="step filled"><span class="step-line"></span><div class="step-circle">5</div><p>Get notified when your request is processed</p></div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU CAN DO HERE -->
+  <section class="section-cards">
+    <div class="section-title">What you can do here</div>
+    <div class="cards-row">
+
+      <div class="card">
+        <span class="accent tri"></span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h3>Contact us</h3>
+        <p>Reach us to request a service, ask a question, submit a complaint, or share feedback. Every message gets the attention it deserves.</p>
+        <button class="btn">Contact us →</button>
+      </div>
+
+      <div class="card">
+        <span class="accent dot"></span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>
+        </div>
+        <h3>Track a request</h3>
+        <p>Every request you've submitted to us comes with a tracking ID. Use your email and tracking ID to check its status at any time.</p>
+        <input class="field" placeholder="Enter email">
+        <input class="field" placeholder="Enter tracking ID">
+        <button class="btn">Track request</button>
+      </div>
+
+      <div class="card">
+        <span class="accent sq"></span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Verify team member</h3>
+        <p>Confirm someone claiming to be from us really works here, using their surname and staff ID.</p>
+        <input class="field" placeholder="Enter surname">
+        <input class="field" placeholder="Enter staff ID">
+        <button class="btn">Verify</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="security">
+    <h2>Your information is secure</h2>
+    <div class="security-grid">
+      <div class="shield">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <span class="accent tri"></span>
+      </div>
+      <div class="security-copy">
+        <p>This portal uses modern security controls to protect your information. Before submitting your details, check for the following:</p>
+        <ul class="checklist">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Look for the padlock icon in your browser's address bar</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Ensure the website address starts with <code>https://</code></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Confirm the domain name matches <code>[Company Name]'s</code> official portal address</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Avoid links shared through unofficial social media accounts or unknown sources</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr class="rule">
+    <p class="foot-copy">If in doubt, type our website address <b>directly</b> into your browser. Your data is processed strictly for the service you request — we never share it with unauthorized third parties.</p>
+    <hr class="rule">
+    <p class="foot-copy">Need help? <a href="#">Watch this video</a> to see how it works</p>
+  </section>
+
+</body>
+</html>

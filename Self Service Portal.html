@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CICOD Enterprise Self-Service Portal | Fast, Seamless, Transparent</title>
+  <style>
+:root {
+  --navy: #0B192C;
+  --navy-light: #1E3E62;
+  --navy-dark: #060D17;
+  --gold: #E8A230;
+  --gold-hover: #D99120;
+  --gold-muted: rgba(232, 162, 48, 0.15);
+  --gold-border: rgba(232, 162, 48, 0.35);
+  --bg-main: #F8FAFC;
+  --slate-50: #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --card-bg: #FFFFFF;
+  --border: #E2E8F0;
+  --text-main: #0B192C;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+  --success: #16A34A;
+  --success-bg: #DCFCE7;
+  --warning: #D97706;
+  --warning-bg: #FEF3C7;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+  --shadow-gold: 0 4px 14px rgba(232, 162, 48, 0.25);
+  --font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TOP HEADER */
+.top-header {
+  background: var(--navy);
+  color: #FFFFFF;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.logo-badge {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+.brand-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.tenant-pill {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.4px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.b2b-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.b2b-btn:hover {
+  background: rgba(255,255,255,0.16);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #86EFAC;
+  background: rgba(34, 197, 94, 0.12);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #22C55E;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22C55E;
+}
+
+/* HERO SECTION */
+.hero-section {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: #FFFFFF;
+  padding: 56px 32px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 140%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(232, 162, 48, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(232, 162, 48, 0.18);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+}
+
+.hero-title {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-desc {
+  font-size: 16px;
+  color: #CBD5E1;
+  max-width: 680px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+
+.trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #E2E8F0;
+  font-weight: 500;
+}
+
+.trust-item svg {
+  color: var(--gold);
+}
+
+/* MAIN CONTAINER */
+.main-wrapper {
+  max-width: 1200px;
+  margin: -36px auto 60px;
+  padding: 0 24px;
+  position: relative;
+  z-index: 10;
+}
+
+/* 3 PRIMARY ACTION CARDS */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.action-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.action-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--navy-light);
+}
+
+.card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  background: var(--slate-100);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+
+.action-card:nth-child(1) .card-icon-wrap {
+  color: var(--gold);
+  background: var(--gold-muted);
+  border-color: var(--gold-border);
+}
+
+.card-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+
+/* EMBEDDED FORM CONTROLS INSIDE CARDS */
+.card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.input-box {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  background: #FFFFFF;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-box:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(11, 25, 44, 0.1);
+}
+
+.btn-primary {
+  height: 44px;
+  background: var(--navy);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--navy-light);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.btn-gold:hover {
+  background: var(--gold-hover);
+  box-shadow: var(--shadow-gold);
+}
+
+/* SECTION HEADERS */
+.section-heading-wrap {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gold);
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+
+.section-heading {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.4px;
+}
+
+.section-subtext {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 6px auto 0;
+}
+
+/* 5 STEPS GUIDE */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.step-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px 18px;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  border: 2px solid var(--gold);
+}
+
+.step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.step-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* TRUST & SECURITY PANEL */
+.trust-panel {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  margin-bottom: 56px;
+  box-shadow: var(--shadow-sm);
+}
+
+.trust-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.security-box {
+  background: var(--slate-50);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px 18px;
+}
+
+.security-box-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.security-box-header svg {
+  color: var(--success);
+}
+
+.security-box-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.security-box-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* FOOTER */
+.portal-footer {
+  background: var(--navy-dark);
+  color: #94A3B8;
+  padding: 48px 32px 32px;
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 36px;
+}
+
+.footer-brand h4 {
+  color: #FFFFFF;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.footer-col h5 {
+  color: #FFFFFF;
+  font-size: 13.5px;
+  margin-bottom: 14px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col a {
+  color: #94A3B8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* MODALS */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 25, 44, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-dialog {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  max-width: 740px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.25);
+  overflow: hidden;
+  animation: modalEnter 0.2s ease-out;
+}
+
+@keyframes modalEnter {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  padding: 20px 24px;
+  background: var(--navy);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title-group h3 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.modal-title-group p {
+  font-size: 12px;
+  color: #CBD5E1;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* SERVICE CATALOG MODAL STYLES */
+.cat-pill-group {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.cat-pill {
+  background: var(--slate-100);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.cat-pill.active, .cat-pill:hover {
+  background: var(--navy);
+  color: #FFFFFF;
+  border-color: var(--navy);
+}
+
+.search-box-wrap {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.service-list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.service-item-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all 0.15s;
+}
+
+.service-item-card:hover {
+  border-color: var(--navy-light);
+  background: var(--slate-50);
+}
+
+.service-item-info h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.service-item-info p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.service-item-meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.badge-sla {
+  background: #FEF3C7;
+  color: #B45309;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.badge-dept {
+  background: var(--slate-100);
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.btn-open-form {
+  padding: 8px 16px;
+  background: var(--navy);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-open-form:hover {
+  background: var(--navy-light);
+}
+
+/* TRACKING TIMELINE STYLES */
+.timeline-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background: var(--slate-50);
+  margin-bottom: 20px;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-badge-in-progress {
+  background: #FEF3C7;
+  color: #92400E;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.stepper-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  padding-left: 28px;
+  margin-top: 20px;
+}
+
+.stepper-wrap::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 10px;
+  width: 2px;
+  background: var(--border);
+}
+
+.step-node {
+  position: relative;
+}
+
+.node-dot {
+  position: absolute;
+  left: -28px;
+  top: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  color: var(--text-muted);
+}
+
+.step-node.done .node-dot {
+  background: var(--success);
+  border-color: var(--success);
+  color: #FFFFFF;
+}
+
+.step-node.current .node-dot {
+  background: var(--gold);
+  border-color: var(--navy);
+  color: var(--navy);
+  box-shadow: 0 0 0 4px var(--gold-muted);
+}
+
+.node-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.node-time {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.node-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  background: #FFFFFF;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  margin-top: 6px;
+}
+
+/* STAFF VERIFICATION CARD */
+.staff-card {
+  border: 2px solid var(--success);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.staff-avatar-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #FFFFFF;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+}
+
+.staff-info-col h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.staff-info-col .staff-role {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy-light);
+  margin-bottom: 6px;
+}
+
+.staff-meta-row {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+/* B2B ORGS DIRECTORY MODAL */
+.org-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.org-table th {
+  background: var(--slate-100);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--border);
+}
+
+.org-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.badge-connected {
+  background: #DCFCE7;
+  color: #15803D;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.badge-pending {
+  background: #FEF3C7;
+  color: #B45309;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.badge-available {
+  background: var(--slate-100);
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .action-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .trust-panel-grid { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+}
+
+</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', var(--font);
+    }
+    .demo-chip-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .demo-chip {
+      background: rgba(11, 25, 44, 0.05);
+      border: 1px dashed var(--border);
+      color: var(--text-muted);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .demo-chip:hover {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+    .form-control {
+      width: 100%;
+      height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+    .form-control:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(11, 25, 44, 0.1);
+    }
+    textarea.form-control {
+      height: 96px;
+      padding: 10px 14px;
+      resize: vertical;
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 600px) {
+      .form-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="top-header">
+    <div class="brand-group">
+      <a href="#" class="brand-logo">
+        <span class="logo-badge">CICOD</span>
+        <span class="brand-title">ENTERPRISE SELF-SERVICE</span>
+      </a>
+      <span class="tenant-pill">CICOD-HQ · Enterprise Node</span>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" class="b2b-btn" id="btn-open-directory" title="Browse interconnected enterprise partners">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+        <span>Engage Connected Businesses</span>
+      </button>
+
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Systems Operational · 99.98% SLA</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-section">
+    <div class="hero-tag">Official Public &amp; Client Intake</div>
+    <h1 class="hero-title">Welcome to the CICOD Enterprise Self-Service Portal</h1>
+    <p class="hero-desc">
+      Submit inquiries, file complaints, transmit official correspondences, track ticket progress in real-time, and verify accredited enterprise representatives without physical office visits.
+    </p>
+
+    <div class="trust-badges">
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        <span>256-Bit SSL Encryption</span>
+      </div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <span>ISO 27001 Certified Security</span>
+      </div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span>Guaranteed SLA Resolution</span>
+      </div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Tamper-Proof Audit Logging</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CONTENT WRAPPER ================= -->
+  <main class="main-wrapper">
+
+    <!-- 3 PRIMARY ACTION CARDS -->
+    <div class="action-grid">
+
+      <!-- CARD 1: SUBMIT REQUEST / SERVICE CATALOG -->
+      <div class="action-card">
+        <div class="card-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        </div>
+        <h2 class="card-title">Submit Request / Service Catalog</h2>
+        <p class="card-text">
+          Browse our structured enterprise service queues across Customer Support, Engineering, Billing, Merchant Operations, and Procurement.
+        </p>
+        <div class="card-form">
+          <button type="button" class="btn-primary btn-gold" id="btn-open-catalog" style="width:100%;">
+            <span>Browse All 18 Services &amp; Apply</span>
+            <span>&rarr;</span>
+          </button>
+          <div style="font-size: 11.5px; color: var(--text-muted); text-align: center; margin-top: 4px;">
+            Instant automated queue routing &amp; SLA ticket generation
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: TRACK ENGAGEMENT -->
+      <div class="action-card">
+        <div class="card-icon-wrap" style="color:var(--navy); background:rgba(11,25,44,0.08); border-color:rgba(11,25,44,0.15);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <h2 class="card-title">Track Request Status &amp; Timeline</h2>
+        <p class="card-text">
+          Enter your registered email and ticket tracking reference to inspect live department routing, assigned lead, and SLA countdown.
+        </p>
+        <form class="card-form" id="track-form">
+          <input type="email" class="input-box" id="track-email" placeholder="Registered Email Address" required>
+          <input type="text" class="input-box" id="track-id" placeholder="Tracking Reference (e.g. CICOD-SR-2026-8812)" required>
+          <button type="submit" class="btn-primary" style="width:100%;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span>Track Status</span>
+          </button>
+          <div class="demo-chip-row">
+            <span style="font-size: 11px; color: var(--text-muted);">Quick Demo:</span>
+            <span class="demo-chip" id="chip-track-demo">CICOD-SR-2026-8812</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- CARD 3: VERIFY STAFF -->
+      <div class="action-card">
+        <div class="card-icon-wrap" style="color:#16A34A; background:rgba(22,163,74,0.1); border-color:rgba(22,163,74,0.25);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+        </div>
+        <h2 class="card-title">Verify Enterprise Representative</h2>
+        <p class="card-text">
+          Safeguard your organization from impersonation. Validate the authentic accreditation of CICOD personnel in real-time.
+        </p>
+        <form class="card-form" id="verify-form">
+          <input type="text" class="input-box" id="verify-surname" placeholder="Staff Official Surname" required>
+          <input type="text" class="input-box" id="verify-id" placeholder="Staff Identification No." required>
+          <button type="submit" class="btn-primary" style="width:100%;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Verify Credentials</span>
+          </button>
+          <div class="demo-chip-row">
+            <span style="font-size: 11px; color: var(--text-muted);">Quick Demo:</span>
+            <span class="demo-chip" id="chip-verify-demo-1">Toriola / 8842</span>
+            <span class="demo-chip" id="chip-verify-demo-2">Okon / 4456</span>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- ================= 5 STEPS GUIDE SECTION ================= -->
+    <div class="section-heading-wrap">
+      <div class="section-label">End-to-End Operational Lifecycle</div>
+      <h2 class="section-heading">How Digital Self-Service Works</h2>
+      <p class="section-subtext">Five structured phases govern every interaction to maintain zero paper footprint and full organizational transparency.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Select Queue &amp; Submit</h3>
+        <p class="step-desc">Pick from 18 specialized department queues and complete the guided web intake form with attachments.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3 class="step-title">Instant Reference ID</h3>
+        <p class="step-desc">Receive an encrypted tracking number (CICOD-SR-XXXX) with SMS &amp; email delivery receipt.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Automated ECMS Triage</h3>
+        <p class="step-desc">Ticket is ingested into CICOD ECMS workflows and routed to the accredited officer within minutes.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3 class="step-title">SLA-Backed Action</h3>
+        <p class="step-desc">Live investigation and resolution proceed under guaranteed turnaround SLAs with real-time tracker updates.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">5</div>
+        <h3 class="step-title">Resolution &amp; Archive</h3>
+        <p class="step-desc">Formal signed resolution documents dispatched to applicant; audit history permanently archived in CICOD Drive.</p>
+      </div>
+    </div>
+
+    <!-- ================= TRUST & SECURITY GOVERNANCE ================= -->
+    <div class="trust-panel">
+      <div class="section-heading-wrap" style="margin-bottom: 16px;">
+        <div class="section-label">Enterprise Compliance &amp; Architecture</div>
+        <h3 class="section-heading" style="font-size:22px;">Built on the Enterprise Workstation Core</h3>
+        <p class="section-subtext">Every self-service intake complies with international cloud standards and zero-trust controls.</p>
+      </div>
+
+      <div class="trust-panel-grid">
+        <div class="security-box">
+          <div class="security-box-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span class="security-box-title">Zero-Trust Intake</span>
+          </div>
+          <p class="security-box-text">All payloads, attachments, and headers are sanitized through automated anti-malware and file verification checks.</p>
+        </div>
+
+        <div class="security-box">
+          <div class="security-box-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span class="security-box-title">Audit Log Immutability</span>
+          </div>
+          <p class="security-box-text">Every action, handover, view, and comment is cryptographically timestamped and stored in immutable logs.</p>
+        </div>
+
+        <div class="security-box">
+          <div class="security-box-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            <span class="security-box-title">Inter-Org Routing</span>
+          </div>
+          <p class="security-box-text">Seamlessly bridge cross-enterprise correspondences directly into partner workstations without third-party email leaks.</p>
+        </div>
+
+        <div class="security-box">
+          <div class="security-box-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span class="security-box-title">Strict SLA Enforcement</span>
+          </div>
+          <p class="security-box-text">Automated SLA escalation triggers notify senior management if ticket resolution exceeds established targets.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= PORTAL FOOTER ================= -->
+  <footer class="portal-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h4>CICOD Enterprise Hub</h4>
+        <p>Plot 7, Block 3, Babatunde Layout, Lagos &amp; Oyo, Nigeria.</p>
+        <p style="margin-top: 8px;">Direct Support: support@cicod.com | +234 (0) 1 888 2426</p>
+        <p style="margin-top: 8px; color: var(--gold); font-weight: 600;">Fast. Seamless. Transparent.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Enterprise Workstations</h5>
+        <ul>
+          <li><a href="#">CICOD ECMS Workflows</a></li>
+          <li><a href="#">CICOD Drive Enterprise</a></li>
+          <li><a href="#">Executive Approvals Hub</a></li>
+          <li><a href="#">Inter-Org Dispatch Gateway</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Compliance &amp; Legal</h5>
+        <ul>
+          <li><a href="#">Data Privacy &amp; NDPR Policy</a></li>
+          <li><a href="#">Security Architecture</a></li>
+          <li><a href="#">Service Level Agreements</a></li>
+          <li><a href="#">Staff Verification Registry</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 CICOD Enterprise. All Rights Reserved.</div>
+      <div>Powered by CICOD Enterprise Cloud Platform</div>
+    </div>
+  </footer>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- MODAL 1: SERVICE CATALOG -->
+  <div class="modal-overlay" id="modal-services">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>CICOD Enterprise Service Catalog</h3>
+          <p>Select a departmental service queue to initiate a digital request</p>
+        </div>
+        <button type="button" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="search-box-wrap">
+          <input type="text" class="input-box" id="service-search-input" placeholder="Search by queue name, department, or keyword...">
+        </div>
+
+        <div class="cat-pill-group" id="cat-pill-group">
+          <!-- Dynamically populated by app.js -->
+        </div>
+
+        <div class="service-list-grid" id="service-list-grid">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: REQUEST SUBMISSION FORM -->
+  <div class="modal-overlay" id="modal-request-form">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 id="form-selected-service-name">Submit Digital Request</h3>
+          <p id="form-selected-service-dept">Customer Operations Queue</p>
+        </div>
+        <button type="button" class="close-btn">&times;</button>
+      </div>
+      
+      <!-- FORM BODY -->
+      <div class="modal-body" id="request-form-body">
+        <form id="request-submission-form">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="applicant-name">Full Name / Primary Contact *</label>
+              <input type="text" class="form-control" id="applicant-name" placeholder="e.g. Adeola Adesina" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="applicant-org">Organization / Company Name</label>
+              <input type="text" class="form-control" id="applicant-org" placeholder="e.g. Crown Interactive Global">
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="applicant-email">Official Email Address *</label>
+              <input type="email" class="form-control" id="applicant-email" placeholder="e.g. adeola@company.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="applicant-phone">Phone Number *</label>
+              <input type="tel" class="form-control" id="applicant-phone" placeholder="e.g. +234 802 345 6789" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="request-subject">Subject / Brief Description *</label>
+              <input type="text" class="form-control" id="request-subject" placeholder="Summary of your request or issue" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="request-priority">Priority Level</label>
+              <select class="form-control" id="request-priority">
+                <option value="Normal">Normal (Standard SLA)</option>
+                <option value="High">High (Expedited Review)</option>
+                <option value="Urgent">Urgent / Critical Incident</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="request-description">Detailed Statement / Particulars *</label>
+            <textarea class="form-control" id="request-description" placeholder="Provide full details, incident specifics, invoice numbers, or relevant context..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="request-attachment">Supporting Documentation (Optional)</label>
+            <input type="file" class="form-control" id="request-attachment" style="padding-top:8px;">
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+              Accepted formats: PDF, DOCX, XLSX, PNG, JPG (Max 15MB). Scanned automatically by Zero-Trust gateway.
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px; margin: 16px 0;">
+            <input type="checkbox" id="declaration-check" required>
+            <label for="declaration-check" style="font-size: 12px; color: var(--text-muted);">
+              I confirm the statements and documents provided are accurate and true to the best of my knowledge.
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary btn-gold" style="width: 100%; height: 46px; font-size: 15px;">
+            Transmit Official Request &rarr;
+          </button>
+        </form>
+      </div>
+
+      <!-- SUCCESS BODY (Rendered after submission) -->
+      <div class="modal-body" id="request-success-body" style="display: none; text-align: center; padding: 36px 24px;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: #DCFCE7; color: #16A34A; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 16px;">
+          &#10003;
+        </div>
+        <h3 style="font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">Request Successfully Transmitted!</h3>
+        <p style="font-size: 13.5px; color: var(--text-muted); max-width: 460px; margin: 0 auto 20px;">
+          Your request has been ingested into the CICOD ECMS workflow engine and assigned to the relevant department queue.
+        </p>
+
+        <div style="background: var(--slate-100); border: 1px dashed var(--gold-border); border-radius: var(--radius-md); padding: 18px; max-width: 380px; margin: 0 auto 24px;">
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Official Tracking Reference ID</div>
+          <div style="font-size: 22px; font-weight: 800; color: var(--navy); letter-spacing: 0.5px;" id="generated-track-id">CICOD-SR-2026-XXXX</div>
+          <div style="font-size: 11.5px; color: #16A34A; font-weight: 600; margin-top: 4px;">SLA Countdown Timer Active</div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button type="button" class="btn-primary btn-gold" id="btn-track-success" style="padding: 0 20px;">
+            Track This Ticket Now &rarr;
+          </button>
+          <button type="button" class="btn-primary" id="btn-copy-track-id" style="padding: 0 16px; background: #FFFFFF; color: var(--navy); border: 1px solid var(--border);">
+            Copy Reference ID
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL 3: TRACKING TIMELINE RESULT -->
+  <div class="modal-overlay" id="modal-track-result">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>Request Tracking &amp; Milestone Timeline</h3>
+          <p>Real-time lifecycle inspection powered by CICOD ECMS</p>
+        </div>
+        <button type="button" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="track-result-container">
+        <!-- Dynamically rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: STAFF VERIFICATION RESULT -->
+  <div class="modal-overlay" id="modal-verify-result">
+    <div class="modal-dialog" style="max-width: 620px;">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>Staff Authentication Record</h3>
+          <p>Official Digital Identity Verification</p>
+        </div>
+        <button type="button" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="verify-result-container">
+        <!-- Dynamically rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: CONNECTED ORGANIZATIONS DIRECTORY -->
+  <div class="modal-overlay" id="modal-directory">
+    <div class="modal-dialog" style="max-width: 820px;">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>Connected Businesses &amp; Organizations Directory</h3>
+          <p>Inter-Org Collaboration Network on the CICOD Cloud Platform</p>
+        </div>
+        <button type="button" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="search-box-wrap">
+          <input type="text" class="input-box" id="directory-search-input" placeholder="Search partner enterprise by company name, industry, code or location...">
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="org-table">
+            <thead>
+              <tr>
+                <th>Enterprise Partner</th>
+                <th>Industry Sector</th>
+                <th>HQ Location</th>
+                <th>Inter-Org Status</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="directory-table-body">
+              <!-- Dynamically rendered by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Logic Scripts -->
+  <script>
+// CICOD Self-Service Portal Data Catalog
+window.CICOD_PORTAL_DATA = {
+  tenant: {
+    name: 'CICOD Enterprise Hub',
+    code: 'CICOD-HQ',
+    tagline: 'Fast. Seamless. Transparent',
+    description: 'Our organization has deployed fully digital self-service operations, enabling seamless request submission, tracking, and collaboration anytime, anywhere, without physical visits.',
+    supportEmail: 'support@cicod.com',
+    supportPhone: '+234 (0) 1 888 2426',
+    address: 'Plot 7, Block 3, Babatunde Layout, Lagos & Oyo, Nigeria',
+    platform: 'Powered by CICOD Enterprise Cloud Platform'
+  },
+  
+  categories: [
+    { id: 'all', name: 'All Services', count: 18 },
+    { id: 'care', name: 'Customer Inquiries & Care', count: 5 },
+    { id: 'tech', name: 'Technical Support & Ops', count: 4 },
+    { id: 'finance', name: 'Billing & Invoicing', count: 3 },
+    { id: 'ops', name: 'Merchant & Product Operations', count: 3 },
+    { id: 'vendor', name: 'Vendor & B2B Procurement', count: 3 }
+  ],
+
+  services: [
+    {
+      id: 'srv-1',
+      catId: 'care',
+      title: 'Customer Inquiry & Service Request',
+      dept: 'Customer Operations',
+      sla: '24h SLA',
+      badge: 'High Volume',
+      desc: 'Submit general enquiries, service activation requests, or account assistance to our customer care team.'
+    },
+    {
+      id: 'srv-2',
+      catId: 'care',
+      title: 'Formal Customer Complaint',
+      dept: 'Quality & Escalations',
+      sla: '12h SLA',
+      badge: 'Escalated',
+      desc: 'File a formal service complaint. Monitored directly by Quality Assurance for rapid resolution.'
+    },
+    {
+      id: 'srv-3',
+      catId: 'care',
+      title: 'Service Commendation & Feedback',
+      dept: 'Customer Experience',
+      sla: '48h SLA',
+      badge: 'Feedback',
+      desc: 'Share positive feedback, staff commendations, or strategic suggestions to improve our services.'
+    },
+    {
+      id: 'srv-4',
+      catId: 'tech',
+      title: 'API Integration & Webhook Support',
+      dept: 'Developer Solutions',
+      sla: '8h SLA',
+      badge: 'Technical',
+      desc: 'Request technical assistance for CICOD APIs, Collections Gateway integrations, or webhook issues.'
+    },
+    {
+      id: 'srv-5',
+      catId: 'tech',
+      title: 'System Bug & Outage Incident Report',
+      dept: 'Engineering & DevOps',
+      sla: '4h SLA',
+      badge: 'Priority 1',
+      desc: 'Report unexpected software errors, application crashes, or service degradation to our engineering team.'
+    },
+    {
+      id: 'srv-6',
+      catId: 'tech',
+      title: 'User Role & Access Re-activation',
+      dept: 'IT Security & Access',
+      sla: '12h SLA',
+      badge: 'Security',
+      desc: 'Request password resets, SSO token clearance, or multi-factor authentication re-sync.'
+    },
+    {
+      id: 'srv-7',
+      catId: 'finance',
+      title: 'Billing Dispute & Chargeback Inquiry',
+      dept: 'Finance & Accounts',
+      sla: '24h SLA',
+      badge: 'Finance',
+      desc: 'Dispute an invoice line item, request payment reconciliation, or inquire about duplicate charges.'
+    },
+    {
+      id: 'srv-8',
+      catId: 'finance',
+      title: 'Tax Invoice & Official Receipt Request',
+      dept: 'Finance & Accounts',
+      sla: '12h SLA',
+      badge: 'Finance',
+      desc: 'Request electronic withholding tax certificates, stamped VAT receipts, or statement of account.'
+    },
+    {
+      id: 'srv-9',
+      catId: 'ops',
+      title: 'Merchant Onboarding & Storefront Setup',
+      dept: 'Merchant Operations',
+      sla: '24h SLA',
+      badge: 'Onboarding',
+      desc: 'Request guided assistance for setting up merchant storefronts, product catalogs, and payout accounts.'
+    },
+    {
+      id: 'srv-10',
+      catId: 'ops',
+      title: 'Inventory & Dispatch Order Escalation',
+      dept: 'Fulfillment Logistics',
+      sla: '6h SLA',
+      badge: 'Logistics',
+      desc: 'Report delivery delays, damaged shipment manifests, or warehouse stock discrepancies.'
+    },
+    {
+      id: 'srv-11',
+      catId: 'vendor',
+      title: 'Vendor Registration & KYC Submission',
+      dept: 'Procurement & Legal',
+      sla: '72h SLA',
+      badge: 'Vendor',
+      desc: 'Submit corporate documentation, tax clearances, and banking details to become an accredited vendor.'
+    },
+    {
+      id: 'srv-12',
+      catId: 'vendor',
+      title: 'Request for Proposal (RFP) Bid Submission',
+      dept: 'Tender & Procurement',
+      sla: '48h SLA',
+      badge: 'Tenders',
+      desc: 'Upload commercial bid proposals, technical architecture documents, and procurement fee receipts.'
+    }
+  ],
+
+  demoTracking: {
+    'CICOD-SR-2026-8812': {
+      id: 'CICOD-SR-2026-8812',
+      email: 'oladeji.toriola@crowninteractive.com',
+      service: 'Formal Customer Complaint',
+      title: 'Webhook synchronization delay on payment settlement',
+      dept: 'Developer Solutions & Ops',
+      officer: 'Toriola Oladeji (Senior Lead)',
+      status: 'IN PROGRESS',
+      submittedDate: 'Nov 02, 2026 · 10:15 AM',
+      slaTarget: 'Target Resolution: Within 6 Hours (On Track)',
+      timeline: [
+        {
+          title: 'Request Submitted Online',
+          time: 'Nov 02, 2026 · 10:15 AM',
+          status: 'done',
+          note: 'Request received with 2 attachments. Tracking ID generated and SMS dispatched to customer.'
+        },
+        {
+          title: 'Automated Triaged & Routing',
+          time: 'Nov 02, 2026 · 10:45 AM',
+          status: 'done',
+          note: 'Classified under Developer Solutions queue in CICOD ECMS with High Priority flag.'
+        },
+        {
+          title: 'Technical Investigation & Log Review',
+          time: 'Nov 03, 2026 · 09:30 AM',
+          status: 'current',
+          note: 'Engineering has verified the webhook payload retry queue. Patch deployed to staging for test.'
+        },
+        {
+          title: 'Customer Resolution & Closure',
+          time: 'Pending Verification',
+          status: 'pending',
+          note: 'Customer will receive confirmation email and post-incident resolution report.'
+        }
+      ]
+    }
+  },
+
+  demoStaff: {
+    'toriola_8842': {
+      surname: 'Toriola',
+      staffId: '8842',
+      fullName: 'Toriola Oladeji',
+      designation: 'Head of Enterprise Architecture & Solutions',
+      dept: 'Product Engineering & ECMS Solutions',
+      status: 'VERIFIED ACTIVE',
+      email: 'toriola.oladeji@crowninteractive.com',
+      phone: '+234 807 447 5933',
+      location: 'Lagos Head Office',
+      issuedDate: 'Jan 2024 - Active Credential'
+    },
+    'okon_4456': {
+      surname: 'Okon',
+      staffId: '4456',
+      fullName: 'Joy Okon',
+      designation: 'Senior Client Operations Specialist',
+      dept: 'Customer Care & Partner Support',
+      status: 'VERIFIED ACTIVE',
+      email: 'joy.okon@cicod.com',
+      phone: '+234 814 217 3712',
+      location: 'Corporate Support Centre',
+      issuedDate: 'Mar 2024 - Active Credential'
+    }
+  },
+
+  b2bOrganizations: [
+    { name: 'Crown Interactive Global', industry: 'Cloud & Workflow Solutions', location: 'Lagos, Nigeria', status: 'Connected', code: 'CI-GLB' },
+    { name: 'Apex Financial Services', industry: 'Banking & Merchant Collections', location: 'Abuja, Nigeria', status: 'Connected', code: 'APX-FIN' },
+    { name: 'OmniRetail Logistics', industry: 'Supply Chain & Warehousing', location: 'Ibadan, Nigeria', status: 'Connected', code: 'OMN-LOG' },
+    { name: 'Prime Health Consortium', industry: 'Healthcare Systems', location: 'Lagos, Nigeria', status: 'Available', code: 'PRM-HLT' },
+    { name: 'Westfield Energy & Utilities', industry: 'Power & Infrastructure', location: 'Port Harcourt, Nigeria', status: 'Available', code: 'WST-NRG' },
+    { name: 'Standard Capital Partners', industry: 'Investment & Asset Management', location: 'London / Lagos', status: 'Available', code: 'STD-CAP' },
+    { name: 'Horizon Telecom Networks', industry: 'Telecommunications', location: 'Abuja, Nigeria', status: 'Connect Pending', code: 'HRZ-TEL' }
+  ]
+};
+
+</script>
+  <script>
+/**
+ * CICOD Enterprise Self-Service Portal - Interactive Controller
+ * Handles modal workflows, dynamic catalog rendering, search filters,
+ * ticket generation, live tracking inspection, and personnel verification.
+ */
+
+(function () {
+  'use strict';
+
+  // State Management
+  const state = {
+    activeCategory: 'all',
+    searchQuery: '',
+    selectedService: null
+  };
+
+  // DOM Elements
+  const DOM = {
+    // Modals
+    modalServices: document.getElementById('modal-services'),
+    modalRequestForm: document.getElementById('modal-request-form'),
+    modalTrackResult: document.getElementById('modal-track-result'),
+    modalVerifyResult: document.getElementById('modal-verify-result'),
+    modalDirectory: document.getElementById('modal-directory'),
+    
+    // Service Catalog
+    catPillGroup: document.getElementById('cat-pill-group'),
+    serviceSearchInput: document.getElementById('service-search-input'),
+    serviceListGrid: document.getElementById('service-list-grid'),
+    
+    // Quick Actions
+    btnOpenCatalog: document.getElementById('btn-open-catalog'),
+    btnOpenDirectory: document.getElementById('btn-open-directory'),
+    
+    // Tracking Form
+    trackForm: document.getElementById('track-form'),
+    trackEmailInput: document.getElementById('track-email'),
+    trackIdInput: document.getElementById('track-id'),
+    trackResultContainer: document.getElementById('track-result-container'),
+    
+    // Verify Form
+    verifyForm: document.getElementById('verify-form'),
+    verifySurnameInput: document.getElementById('verify-surname'),
+    verifyIdInput: document.getElementById('verify-id'),
+    verifyResultContainer: document.getElementById('verify-result-container'),
+    
+    // Directory
+    directorySearchInput: document.getElementById('directory-search-input'),
+    directoryTableBody: document.getElementById('directory-table-body'),
+    
+    // Request Form Elements
+    formSelectedServiceName: document.getElementById('form-selected-service-name'),
+    formSelectedServiceDept: document.getElementById('form-selected-service-dept'),
+    requestSubmissionForm: document.getElementById('request-submission-form'),
+    requestFormBody: document.getElementById('request-form-body'),
+    requestSuccessBody: document.getElementById('request-success-body'),
+    generatedTrackId: document.getElementById('generated-track-id')
+  };
+
+  // Helper: Open Modal
+  function openModal(modal) {
+    if (!modal) return;
+    document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Helper: Close Modal
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Bind Universal Modal Close Listeners
+  function initModals() {
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          closeModal(overlay);
+        }
+      });
+      const closeBtn = overlay.querySelector('.close-btn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => closeModal(overlay));
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m));
+      }
+    });
+
+    if (DOM.btnOpenCatalog) {
+      DOM.btnOpenCatalog.addEventListener('click', () => openModal(DOM.modalServices));
+    }
+
+    if (DOM.btnOpenDirectory) {
+      DOM.btnOpenDirectory.addEventListener('click', () => {
+        renderDirectoryTable();
+        openModal(DOM.modalDirectory);
+      });
+    }
+  }
+
+  // Render Category Filter Pills
+  function renderCategoryPills() {
+    if (!DOM.catPillGroup || !window.CICOD_PORTAL_DATA) return;
+    const cats = window.CICOD_PORTAL_DATA.categories;
+    DOM.catPillGroup.innerHTML = cats.map(cat => `
+      <button type="button" class="cat-pill ${cat.id === state.activeCategory ? 'active' : ''}" data-cat="${cat.id}">
+        ${cat.name} (${cat.count})
+      </button>
+    `).join('');
+
+    DOM.catPillGroup.querySelectorAll('.cat-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.activeCategory = btn.getAttribute('data-cat');
+        DOM.catPillGroup.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderServiceList();
+      });
+    });
+  }
+
+  // Render Service List with Filters
+  function renderServiceList() {
+    if (!DOM.serviceListGrid || !window.CICOD_PORTAL_DATA) return;
+    let services = window.CICOD_PORTAL_DATA.services;
+
+    if (state.activeCategory !== 'all') {
+      services = services.filter(s => s.catId === state.activeCategory);
+    }
+
+    if (state.searchQuery.trim()) {
+      const q = state.searchQuery.toLowerCase().trim();
+      services = services.filter(s => 
+        s.title.toLowerCase().includes(q) || 
+        s.desc.toLowerCase().includes(q) || 
+        s.dept.toLowerCase().includes(q)
+      );
+    }
+
+    if (services.length === 0) {
+      DOM.serviceListGrid.innerHTML = `
+        <div style="text-align: center; padding: 36px 16px; color: var(--text-muted);">
+          <p style="font-weight: 600; font-size: 15px; margin-bottom: 6px;">No matching service queues found</p>
+          <p style="font-size: 13px;">Try refining your search keyword or selecting a different category.</p>
+        </div>
+      `;
+      return;
+    }
+
+    DOM.serviceListGrid.innerHTML = services.map(s => `
+      <div class="service-item-card" data-service-id="${s.id}">
+        <div class="service-item-info">
+          <h4>${s.title}</h4>
+          <p>${s.desc}</p>
+          <div class="service-item-meta">
+            <span class="badge-sla">${s.sla}</span>
+            <span class="badge-dept">${s.dept}</span>
+            <span class="badge-dept" style="background:#E2E8F0; color:#0B192C; font-weight:600;">${s.badge}</span>
+          </div>
+        </div>
+        <button type="button" class="btn-open-form" data-service-id="${s.id}">
+          Start Request &rarr;
+        </button>
+      </div>
+    `).join('');
+
+    // Attach click listeners to "Start Request" buttons
+    DOM.serviceListGrid.querySelectorAll('.btn-open-form').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sId = btn.getAttribute('data-service-id');
+        openRequestFormForService(sId);
+      });
+    });
+  }
+
+  // Open Request Submission Modal for Service
+  function openRequestFormForService(serviceId) {
+    const s = window.CICOD_PORTAL_DATA.services.find(item => item.id === serviceId);
+    if (!s) return;
+    state.selectedService = s;
+
+    if (DOM.formSelectedServiceName) DOM.formSelectedServiceName.textContent = s.title;
+    if (DOM.formSelectedServiceDept) DOM.formSelectedServiceDept.textContent = `${s.dept} · Guaranteed ${s.sla}`;
+
+    // Reset Form view
+    if (DOM.requestFormBody) DOM.requestFormBody.style.display = 'block';
+    if (DOM.requestSuccessBody) DOM.requestSuccessBody.style.display = 'none';
+    if (DOM.requestSubmissionForm) DOM.requestSubmissionForm.reset();
+
+    closeModal(DOM.modalServices);
+    openModal(DOM.modalRequestForm);
+  }
+
+  // Handle Request Submission
+  function initRequestSubmission() {
+    if (!DOM.requestSubmissionForm) return;
+
+    DOM.requestSubmissionForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const btn = DOM.requestSubmissionForm.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<span style="display:inline-block; animation:spin 1s linear infinite;">&#9696;</span> Generating Ticket & Routing...`;
+      btn.disabled = true;
+
+      const applicantName = document.getElementById('applicant-name').value;
+      const applicantEmail = document.getElementById('applicant-email').value;
+      const applicantPhone = document.getElementById('applicant-phone').value;
+      const applicantOrg = document.getElementById('applicant-org').value || 'Individual Client';
+      const requestSubject = document.getElementById('request-subject').value;
+      const requestDescription = document.getElementById('request-description').value;
+      const requestPriority = document.getElementById('request-priority').value;
+
+      setTimeout(() => {
+        // Generate Unique Reference ID
+        const randomNum = Math.floor(1000 + Math.random() * 9000);
+        const newTrackingId = `CICOD-SR-2026-${randomNum}`;
+        const serviceTitle = state.selectedService ? state.selectedService.title : 'General Customer Request';
+        const serviceDept = state.selectedService ? state.selectedService.dept : 'Customer Operations';
+        const serviceSla = state.selectedService ? state.selectedService.sla : '24h SLA';
+
+        // Register dynamic ticket into demo tracking store so user can track it immediately!
+        window.CICOD_PORTAL_DATA.demoTracking[newTrackingId] = {
+          id: newTrackingId,
+          email: applicantEmail,
+          service: serviceTitle,
+          title: requestSubject,
+          dept: serviceDept,
+          officer: 'Automated Triaging Queue',
+          status: 'PENDING TRIAGE',
+          submittedDate: 'Just Now · ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          slaTarget: `Target Resolution: ${serviceSla}`,
+          timeline: [
+            {
+              title: 'Request Submitted Online',
+              time: 'Just Now',
+              status: 'done',
+              note: `Submission received from ${applicantName} (${applicantOrg}). Dispatched to ${serviceDept}.`
+            },
+            {
+              title: 'Automated Triaged & Department Assignment',
+              time: 'In Queue',
+              status: 'current',
+              note: `Classified under Priority "${requestPriority}". Routing to senior workflow officer.`
+            },
+            {
+              title: 'Technical Investigation & Resolution',
+              time: 'Pending',
+              status: 'pending',
+              note: 'Workflow officer will assess provided details and execute required actions.'
+            },
+            {
+              title: 'Resolution Notification & Closure',
+              time: 'Pending',
+              status: 'pending',
+              note: `Formal completion update and audit report will be dispatched to ${applicantEmail}.`
+            }
+          ]
+        };
+
+        // Render success body
+        if (DOM.generatedTrackId) DOM.generatedTrackId.textContent = newTrackingId;
+        if (DOM.requestFormBody) DOM.requestFormBody.style.display = 'none';
+        if (DOM.requestSuccessBody) DOM.requestSuccessBody.style.display = 'block';
+
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+
+        // Auto-fill tracking card inputs for user convenience
+        if (DOM.trackEmailInput) DOM.trackEmailInput.value = applicantEmail;
+        if (DOM.trackIdInput) DOM.trackIdInput.value = newTrackingId;
+
+      }, 800);
+    });
+
+    // Success action: Track this ticket immediately
+    const btnTrackSuccess = document.getElementById('btn-track-success');
+    if (btnTrackSuccess) {
+      btnTrackSuccess.addEventListener('click', () => {
+        closeModal(DOM.modalRequestForm);
+        const trackId = DOM.generatedTrackId.textContent;
+        renderTrackingResult(trackId);
+        openModal(DOM.modalTrackResult);
+      });
+    }
+
+    // Success action: Copy Reference ID
+    const btnCopyTrackId = document.getElementById('btn-copy-track-id');
+    if (btnCopyTrackId) {
+      btnCopyTrackId.addEventListener('click', () => {
+        const text = DOM.generatedTrackId.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          btnCopyTrackId.textContent = 'Copied to Clipboard!';
+          setTimeout(() => { btnCopyTrackId.textContent = 'Copy Reference ID'; }, 2000);
+        });
+      });
+    }
+  }
+
+  // Render Tracking Result Modal
+  function renderTrackingResult(trackingId) {
+    if (!DOM.trackResultContainer || !window.CICOD_PORTAL_DATA) return;
+    const cleanId = (trackingId || '').trim();
+    const data = window.CICOD_PORTAL_DATA.demoTracking[cleanId] ||
+                 Object.values(window.CICOD_PORTAL_DATA.demoTracking).find(item => item.id.toLowerCase() === cleanId.toLowerCase());
+
+    if (!data) {
+      DOM.trackResultContainer.innerHTML = `
+        <div style="text-align: center; padding: 32px 16px;">
+          <div style="font-size: 32px; color: #D97706; margin-bottom: 12px;">&#9888;</div>
+          <h4 style="font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">No Record Found for "${cleanId}"</h4>
+          <p style="font-size: 13px; color: var(--text-muted); max-width: 420px; margin: 0 auto 16px;">
+            Please ensure you typed the exact reference format (e.g., <strong>CICOD-SR-2026-8812</strong>) along with your registered email address.
+          </p>
+          <button type="button" class="btn-primary btn-gold" id="btn-fill-demo-track" style="margin: 0 auto; display: inline-flex;">
+            Load Live Demo Ticket (CICOD-SR-2026-8812)
+          </button>
+        </div>
+      `;
+      const btnFill = document.getElementById('btn-fill-demo-track');
+      if (btnFill) {
+        btnFill.addEventListener('click', () => {
+          renderTrackingResult('CICOD-SR-2026-8812');
+          if (DOM.trackEmailInput) DOM.trackEmailInput.value = 'oladeji.toriola@crowninteractive.com';
+          if (DOM.trackIdInput) DOM.trackIdInput.value = 'CICOD-SR-2026-8812';
+        });
+      }
+      return;
+    }
+
+    const stepsHtml = data.timeline.map((st, idx) => `
+      <div class="step-node ${st.status}">
+        <div class="node-dot">${idx + 1}</div>
+        <div class="node-title">${st.title}</div>
+        <div class="node-time">${st.time}</div>
+        <div class="node-note">${st.note}</div>
+      </div>
+    `).join('');
+
+    DOM.trackResultContainer.innerHTML = `
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div>
+            <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--gold); letter-spacing: 0.5px;">Reference ID</span>
+            <h3 style="font-size: 18px; font-weight: 800; color: var(--navy);">${data.id}</h3>
+          </div>
+          <span class="timeline-badge-in-progress">${data.status}</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 12.5px; margin-bottom: 12px;">
+          <div><strong style="color:var(--navy);">Service Queue:</strong> <br>${data.service}</div>
+          <div><strong style="color:var(--navy);">Department:</strong> <br>${data.dept}</div>
+          <div><strong style="color:var(--navy);">Assigned Lead:</strong> <br>${data.officer}</div>
+          <div><strong style="color:var(--navy);">SLA Performance:</strong> <br><span style="color:#B45309; font-weight:600;">${data.slaTarget}</span></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted); border-top: 1px dashed var(--border); padding-top: 8px;">
+          <strong>Request Subject:</strong> "${data.title}"
+        </div>
+      </div>
+
+      <h4 style="font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+        <span>Progress Milestone Stepper</span>
+        <span style="font-size: 11px; font-weight: 500; color: var(--text-muted);">(Real-Time Automated Synced)</span>
+      </h4>
+
+      <div class="stepper-wrap">
+        ${stepsHtml}
+      </div>
+    `;
+  }
+
+  // Handle Tracking Form Submission from Card
+  function initTrackingForm() {
+    if (!DOM.trackForm) return;
+
+    DOM.trackForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const trackId = DOM.trackIdInput.value.trim();
+      renderTrackingResult(trackId);
+      openModal(DOM.modalTrackResult);
+    });
+
+    // Demo auto-fill chip
+    const chipTrackDemo = document.getElementById('chip-track-demo');
+    if (chipTrackDemo) {
+      chipTrackDemo.addEventListener('click', () => {
+        if (DOM.trackEmailInput) DOM.trackEmailInput.value = 'oladeji.toriola@crowninteractive.com';
+        if (DOM.trackIdInput) DOM.trackIdInput.value = 'CICOD-SR-2026-8812';
+        renderTrackingResult('CICOD-SR-2026-8812');
+        openModal(DOM.modalTrackResult);
+      });
+    }
+  }
+
+  // Render Staff Verification Result Modal
+  function renderVerifyResult(surname, staffId) {
+    if (!DOM.verifyResultContainer || !window.CICOD_PORTAL_DATA) return;
+    const key = `${(surname || '').toLowerCase().trim()}_${(staffId || '').trim()}`;
+    const staff = window.CICOD_PORTAL_DATA.demoStaff[key] ||
+                  Object.values(window.CICOD_PORTAL_DATA.demoStaff).find(s => 
+                    s.surname.toLowerCase() === (surname || '').toLowerCase().trim() && 
+                    s.staffId.trim() === (staffId || '').trim()
+                  );
+
+    if (!staff) {
+      DOM.verifyResultContainer.innerHTML = `
+        <div style="text-align: center; padding: 32px 16px;">
+          <div style="font-size: 32px; color: #DC2626; margin-bottom: 12px;">&#10060;</div>
+          <h4 style="font-size: 16px; font-weight: 700; color: #DC2626; margin-bottom: 8px;">Staff Verification Failed</h4>
+          <p style="font-size: 13px; color: var(--text-muted); max-width: 440px; margin: 0 auto 16px;">
+            No accredited personnel matches Surname <strong>"${surname}"</strong> with ID <strong>"${staffId}"</strong>.
+            Please verify the exact spellings or alert security if you suspect unauthorized misrepresentation.
+          </p>
+          <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+            <button type="button" class="btn-primary" id="btn-fill-staff-1" style="font-size: 12px; height: 36px; padding: 0 12px;">
+              Try Toriola / 8842
+            </button>
+            <button type="button" class="btn-primary" id="btn-fill-staff-2" style="font-size: 12px; height: 36px; padding: 0 12px;">
+              Try Okon / 4456
+            </button>
+          </div>
+        </div>
+      `;
+      const btnStaff1 = document.getElementById('btn-fill-staff-1');
+      if (btnStaff1) {
+        btnStaff1.addEventListener('click', () => {
+          if (DOM.verifySurnameInput) DOM.verifySurnameInput.value = 'Toriola';
+          if (DOM.verifyIdInput) DOM.verifyIdInput.value = '8842';
+          renderVerifyResult('Toriola', '8842');
+        });
+      }
+      const btnStaff2 = document.getElementById('btn-fill-staff-2');
+      if (btnStaff2) {
+        btnStaff2.addEventListener('click', () => {
+          if (DOM.verifySurnameInput) DOM.verifySurnameInput.value = 'Okon';
+          if (DOM.verifyIdInput) DOM.verifyIdInput.value = '4456';
+          renderVerifyResult('Okon', '4456');
+        });
+      }
+      return;
+    }
+
+    const initials = staff.fullName.split(' ').map(n => n[0]).join('').substring(0, 2);
+
+    DOM.verifyResultContainer.innerHTML = `
+      <div class="staff-card">
+        <div class="staff-avatar-box">${initials}</div>
+        <div class="staff-info-col" style="flex:1;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+            <h3>${staff.fullName}</h3>
+            <span class="badge-connected" style="display:flex; align-items:center; gap:4px;">
+              <span>&#10003;</span> ${staff.status}
+            </span>
+          </div>
+          <div class="staff-role">${staff.designation}</div>
+          <div style="font-size: 13px; color: var(--navy); font-weight: 500;">
+            <strong>Department:</strong> ${staff.dept}
+          </div>
+          
+          <div class="staff-meta-row">
+            <div><strong>Staff ID:</strong> ${staff.staffId}</div>
+            <div><strong>Email:</strong> ${staff.email}</div>
+            <div><strong>Location:</strong> ${staff.location}</div>
+          </div>
+
+          <div style="margin-top: 12px; padding: 8px 12px; background: rgba(34,197,94,0.08); border-radius: var(--radius-sm); border: 1px solid rgba(34,197,94,0.25); font-size: 11.5px; color: #166534;">
+            Official Digital Identification valid for enterprise representation, procurement verification, and customer engagements.
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Handle Verify Form Submission from Card
+  function initVerifyForm() {
+    if (!DOM.verifyForm) return;
+
+    DOM.verifyForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const surname = DOM.verifySurnameInput.value.trim();
+      const staffId = DOM.verifyIdInput.value.trim();
+      renderVerifyResult(surname, staffId);
+      openModal(DOM.modalVerifyResult);
+    });
+
+    // Demo auto-fill chip 1
+    const chipVerifyDemo1 = document.getElementById('chip-verify-demo-1');
+    if (chipVerifyDemo1) {
+      chipVerifyDemo1.addEventListener('click', () => {
+        if (DOM.verifySurnameInput) DOM.verifySurnameInput.value = 'Toriola';
+        if (DOM.verifyIdInput) DOM.verifyIdInput.value = '8842';
+        renderVerifyResult('Toriola', '8842');
+        openModal(DOM.modalVerifyResult);
+      });
+    }
+
+    // Demo auto-fill chip 2
+    const chipVerifyDemo2 = document.getElementById('chip-verify-demo-2');
+    if (chipVerifyDemo2) {
+      chipVerifyDemo2.addEventListener('click', () => {
+        if (DOM.verifySurnameInput) DOM.verifySurnameInput.value = 'Okon';
+        if (DOM.verifyIdInput) DOM.verifyIdInput.value = '4456';
+        renderVerifyResult('Okon', '4456');
+        openModal(DOM.modalVerifyResult);
+      });
+    }
+  }
+
+  // Render Connected Organizations Directory Table
+  function renderDirectoryTable() {
+    if (!DOM.directoryTableBody || !window.CICOD_PORTAL_DATA) return;
+    let orgs = window.CICOD_PORTAL_DATA.b2bOrganizations;
+
+    if (DOM.directorySearchInput && DOM.directorySearchInput.value.trim()) {
+      const q = DOM.directorySearchInput.value.toLowerCase().trim();
+      orgs = orgs.filter(o => 
+        o.name.toLowerCase().includes(q) || 
+        o.industry.toLowerCase().includes(q) || 
+        o.location.toLowerCase().includes(q) ||
+        o.code.toLowerCase().includes(q)
+      );
+    }
+
+    DOM.directoryTableBody.innerHTML = orgs.map(org => {
+      let badgeClass = 'badge-available';
+      if (org.status === 'Connected') badgeClass = 'badge-connected';
+      if (org.status === 'Connect Pending') badgeClass = 'badge-pending';
+
+      return `
+        <tr>
+          <td>
+            <strong style="color:var(--navy); font-size:13.5px;">${org.name}</strong><br>
+            <span style="font-size:11px; color:var(--text-muted); font-family:monospace;">${org.code}</span>
+          </td>
+          <td>${org.industry}</td>
+          <td>${org.location}</td>
+          <td><span class="${badgeClass}">${org.status}</span></td>
+          <td style="text-align: right;">
+            <button type="button" class="btn-primary" style="height: 30px; font-size: 11.5px; padding: 0 12px; display:inline-flex;" onclick="window.initiateInterOrgRequest('${org.name}')">
+              Connect &rarr;
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  // Inter-Org Initiation from directory
+  window.initiateInterOrgRequest = function (orgName) {
+    closeModal(DOM.modalDirectory);
+    openRequestFormForService('srv-1'); // Default to Customer Inquiry & Service Request
+    const subjInput = document.getElementById('request-subject');
+    if (subjInput) subjInput.value = `Inter-Org Collaboration: Request to ${orgName}`;
+    const orgInput = document.getElementById('applicant-org');
+    if (orgInput) orgInput.value = orgName;
+  };
+
+  // Search input listeners
+  function initSearchInputs() {
+    if (DOM.serviceSearchInput) {
+      DOM.serviceSearchInput.addEventListener('input', (e) => {
+        state.searchQuery = e.target.value;
+        renderServiceList();
+      });
+    }
+
+    if (DOM.directorySearchInput) {
+      DOM.directorySearchInput.addEventListener('input', () => {
+        renderDirectoryTable();
+      });
+    }
+  }
+
+  // Initialize Whole Application on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', () => {
+    initModals();
+    renderCategoryPills();
+    renderServiceList();
+    initRequestSubmission();
+    initTrackingForm();
+    initVerifyForm();
+    initSearchInputs();
+  });
+
+})();
+
+</script>
+</body>
+</html>
